@@ -2,6 +2,7 @@ package model;
 
 public class DataUser {
 	private int idDataUser;
+	private int fkUser;
 	private String nmCPF;
 	private String nmCreditCard;
 	private String nmCod;
@@ -44,6 +45,16 @@ public class DataUser {
 
 	public void setNmCod(String nmCod) {
 		this.nmCod = nmCod;
+	}
+
+
+	public int getFkUser() {
+		return fkUser;
+	}
+
+
+	public void setFkUser(int fkUser) {
+		this.fkUser = fkUser;
 	}
 
 }

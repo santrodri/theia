@@ -10,15 +10,14 @@ package model;
 public class User {
 
 	private int id;
-	private int idUserData; 
 	private String name;
-	private String age;
+	private Integer age;
 	private String userName;
 	private String email;
 	private String password;
 	
-	public int getId() {
-		return id;
+	public String getId() {
+		return Integer.toString(id);
 	}
 
 	public void setId(int id) {
@@ -26,12 +25,8 @@ public class User {
 	}
 	
 
-	public int getIdUserData() {
-		return idUserData;
-	}
-
-	public void setIdUserData(int idUserData) {
-		this.idUserData = idUserData;
+	public String getIdUserData() {
+		return Integer.toString(id);
 	}
 
 	public String getName() {
@@ -43,10 +38,10 @@ public class User {
 	}
 
 	public String getAge() {
-		return age;
+		return Integer.toString(age);
 	}
 
-	public void setAge(String age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 
@@ -72,6 +67,16 @@ public class User {
 
 	public void setPasword(String password) {
 		this.password = password;
+	}
+	
+	public void printStatus(){
+		System.out.println("\nnome: " + this.getName() +
+						   "\nnome de usuario: " + this.getUserName()+
+						   "\nidade: " + this.getAge() + 
+						   "\nemail: " + this.getEmail() + 
+						   "\nsenha: " + this.getPassword() +
+						   "\nid:" + this.getId()
+				);
 	}
 	
 }

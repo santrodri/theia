@@ -13,10 +13,5 @@ public abstract class Controller {
 	public Controller() {
 		connector = new Connector("localhost", "db_user", "root", "20192263877");	
 	}
-	abstract void creat(Class<?> user);
 	abstract void delete(Integer id);
-	abstract public void update(Class<?> user);
-	abstract public Class<?> selectUnique(Integer id);
-	abstract public ArrayList<Class> selectFull();
-	}
-
+}

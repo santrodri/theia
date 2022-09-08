@@ -15,7 +15,7 @@ public class Connector {
 			 		 String password) {
 		String adress = "jdbc:mysql://" + server + "/" + database;
 		try {
-//			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			setConnection(adress, user, password);
 		}catch (Exception e) {
 			e.printStackTrace();
