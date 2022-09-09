@@ -59,6 +59,7 @@ public class UserController{
 				Cryptography.encrypt(user.getPassword()),
 				user.getId()
 		};
+		System.out.println(String.format(sql, data));
 		connector.executeUpdate(String.format(sql, data));
 	}
 	
@@ -84,7 +85,6 @@ public class UserController{
 		} finally {
 			connector.killStatement();
 		}
-		user.printStatus();
 		return user;
 	}
 	
@@ -103,32 +103,22 @@ public class UserController{
 
 			mapUsers.put(index++, user);
 			}
+			connector.killStatement();
 			return mapUsers;
 	}
-	
-	public static void main(String[] args) throws SQLException {
-//		User user = new User();
-//		user.setName("ts");
-//		user.setAge(10);
-//		user.setUserName("ts");
-//		user.setEmail("ts");
-//		user.setPasword("ts");
-//		user.setId(6);
-		UserController userController = new UserController();
-//		userController.update(user);
-//		userController.creat(user);
-//		System.out.println(Cryptography.matchVaues("ts",
-//				"0qbMDlfawcm8f4yjlv26+xHQJ8KkLa8U"));
-//		userController.delete(6);
-//		userController.selectUnique(7);
-		for (Map.Entry<Integer, User> users : userController.selectFull().entrySet()) {
-			int key = users.getKey();
-			User userl = users.getValue();
-			System.out.println(key);
-			userl.printStatus();
-			System.out.println('\n');
-			
-		}
-	}
 
+	public int maxId() {
+		String sql = "SELECT id_user FROM tb_user tu ORDER BY id_user DESC LIMIT 1";
+		int maxId = 0;
+		try {
+			ResultSet result = connector.executeQuery(sql);
+			result.next();
+			maxId = result.getInt("id_user");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			connector.killStatement();
+		}
+		return maxId;
+	}
 }

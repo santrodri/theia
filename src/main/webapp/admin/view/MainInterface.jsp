@@ -7,12 +7,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Interface Principal</title>
     <style>
         body{text-align: center;}
         main{
             margin: 0 auto;
-            width: 90%;
+            width: 95%;
         }
         table td, table th {
             text-align: center;
@@ -31,19 +31,21 @@
               <th>NOME_USUARIO</th>
               <th>EMAIL</th>
               <th>AGE</th>
-              <th>SENHA</th>
+              <th>SENHA CRIPTOGRAFADA</th>
               <th>OPÇÕES</th>
              </tr>
     <%
           UserController userCtl = new UserController();
-		  String linkDeEdicao  = "editaConta.jsp?id=%s";
-		  String linkDeRemocao = "removeConta.jsp?id=%s";
+		  String linkDeEdicao  = "FormUpdateUser.jsp?id=%s";
+		  String linkDeRemocao = "../controller/RespRemoveUser.jsp?id=%s";
+		  String linkData = "FormUpdateData.jsp?id=%s";
 		  for (Map.Entry<Integer, User> users : userCtl.selectFull().entrySet()) {
 			  int key = users.getKey();
 			  User user = users.getValue();
-	      	String linkDeRemocaoEmUso = String.format(linkDeRemocao,user.getId());
-	      	String linkDeEdicaoEmUso = String.format(linkDeEdicao,user.getId());
-	      %>
+	      	String linkDeRemocaoEmUso = String.format(linkDeRemocao, user.getId());
+	      	String linkDeEdicaoEmUso = String.format(linkDeEdicao, user.getId());
+	     	String linkDataInUse = String.format(linkData, user.getId());
+	      	%>
 	            <tr>
 	            	<td><%=user.getId() %></td>
 	                <td><%=user.getName()%></td>
@@ -56,6 +58,7 @@
 	            <td>
 	                    <a href="<%=linkDeEdicaoEmUso %>"><input type="button" value="editar"></a>
 	                    <a href="<%=linkDeRemocaoEmUso%>"><input type="button" value="remover"></a>         
+	                    <a href="<%=linkDataInUse%>"><input type="button" value="Alterar dados"></a>         
 	           </td>
 	            </tr>
          <%

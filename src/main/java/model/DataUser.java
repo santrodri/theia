@@ -1,15 +1,17 @@
 package model;
 
+import model.User;
+
 public class DataUser {
 	private int idDataUser;
 	private int fkUser;
 	private String nmCPF;
 	private String nmCreditCard;
 	private String nmCod;
+	private User user;
 	
-	
-	public int getIdDataUser() {
-		return idDataUser;
+	public String getIdDataUser() {
+		return String.valueOf(idDataUser);
 	}
 
 
@@ -48,13 +50,21 @@ public class DataUser {
 	}
 
 
-	public int getFkUser() {
-		return fkUser;
+	public String getFkUser() {
+		return String.valueOf(fkUser);
 	}
 
 
 	public void setFkUser(int fkUser) {
 		this.fkUser = fkUser;
 	}
-
+	
+	public void printStatus() {
+		System.out.println("\nid: " + this.getIdDataUser() +
+						   "\nfk: " + this.getFkUser() +
+						   "\ncpf: " + this.getNmCPF() +
+						   "\ncartao: "+ this.getNmCreditCard()+
+						   "\ncod: " + this.getNmCod()
+				);
+	 }
 }
